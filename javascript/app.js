@@ -63,45 +63,58 @@ let wrong = 0
 // Number of missed questions
 let unanswered = 0
 // Timer
-let countdown = 40
+let countdown = 10
+let timeout = false
+let timer = (setInterval(countdownFun, 1000))
 
 // Function to render questions.
 function renderQuestion() {
+  if (!timeout){
+
   if (questionIndex <= (trivia.length - 1)) {
-    document.querySelector("#trivia").innerHTML = trivia[questionIndex].q;
+    document.querySelector("#trivia").innerHTML = trivia[questionIndex].question;
+    console.log(trivia[questionIndex].answer)
   }
 
   // If there aren't, render the end game screen.
   else {
     document.querySelector("#trivia").innerHTML = "Game Over!";
+showresults()
   }
+}
 }
 // Answer input
-if (userInput === "True" || userInput === "False") {
+//let userInput = "true"
+//if (userInput === "True" || userInput === "False") {
 
   // If they guess the correct answer, increase and alert them they got it right.
-  if (userInput === trivia[questionIndex].a) {
-    alert("Correct!");
-    right++;
-  }
+
+  //if (userInput === trivia[questionIndex].a) {
+    //alert("Correct!");
+  //  right++;
+  //}
   // If wrong, alert them they are wrong.
-  else {
-    alert("Wrong!");
-    wrong++;
-  }
+  //else {
+    //alert("Wrong!");
+    ///wrong++;
+  //}
 
   // Increment the questionIndex variable and call the renderQuestion function.
-  questionIndex++;
-  renderQuestion();
+  //questionIndex++;
+  // renderQuestion();
 
+
+function countdownFun() {
+  countdown--
+  console.log(countdown)
+  if (countdown === 0) {
+    timeout = true
+    clearInterval(timer)
+    document.getElementById("gamearea").innerHTML=""
+    showresults()
+    //  Game is  over, clear timer 
+  }
 }
-
-// let timer = (setInterval(countdown, 40000)
-// function countdown() {
-//   countdown--
-//   if (countdown === 0) {
-//     //  Game is  over, clear timer 
-//   }
 
 // for (i = question; i < trivia.length; i++) {
 //   text += trivia[i];
@@ -111,4 +124,46 @@ if (userInput === "True" || userInput === "False") {
 //   //loop trivia[i].question   div with questions and when the game is over you empty the div and show a info in the results div
 
 // Calling function to start the game.
-renderQuestion();
+
+document.getElementById("true").addEventListener("click", function () {
+  console.log(this)
+  if (trivia[questionIndex].answer === "True") {
+
+    alert("Correct!");
+    right++;
+  }
+
+  else {
+    alert("Wrong!");
+    wrong++;
+  }
+  questionIndex++;
+  renderQuestion();
+})
+
+document.getElementById("false").addEventListener("click", function () {
+  console.log(this)
+
+  if (trivia[questionIndex].answer === "False") {
+
+    alert("Correct!");
+    right++;
+  }
+
+  else {
+    alert("Wrong!");
+    wrong++;
+  }
+  questionIndex++;
+  renderQuestion();
+
+})
+
+
+function  showresults() {
+//document.getElementsByClassName("card-content").innerHTML=""
+// you can show other content with the results
+  
+}
+
+  renderQuestion();
