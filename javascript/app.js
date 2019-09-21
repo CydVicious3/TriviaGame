@@ -3,7 +3,7 @@
 // list of questions & answers
 var trivia = [
   {
-    question: "The music group Daft Punk got their name from a negative review they recieved.",
+    question: "The music group Daft Punk got their name from a negative review they received.",
     answer: "True"
   },
 
@@ -63,68 +63,40 @@ let wrong = 0
 // Number of missed questions
 let unanswered = 0
 // Timer
-let countdown = 10
+let countdown = 40
 let timeout = false
 let timer = (setInterval(countdownFun, 1000))
 
 // Function to render questions.
 function renderQuestion() {
-  if (!timeout){
+  if (!timeout) {
 
-  if (questionIndex <= (trivia.length - 1)) {
-    document.querySelector("#trivia").innerHTML = trivia[questionIndex].question;
-    console.log(trivia[questionIndex].answer)
-  }
+    if (questionIndex <= (trivia.length - 1)) {
+      document.querySelector("#trivia").innerHTML = trivia[questionIndex].question;
+      console.log(trivia[questionIndex].answer)
+    }
 
-  // If there aren't, render the end game screen.
-  else {
-    document.querySelector("#trivia").innerHTML = "Game Over!";
-showresults()
+    // If there aren't, render the end game screen.
+    else {
+      document.querySelector("#trivia").innerHTML = "Game Over!";
+      showresults()
+    }
   }
 }
-}
-// Answer input
-//let userInput = "true"
-//if (userInput === "True" || userInput === "False") {
 
-  // If they guess the correct answer, increase and alert them they got it right.
-
-  //if (userInput === trivia[questionIndex].a) {
-    //alert("Correct!");
-  //  right++;
-  //}
-  // If wrong, alert them they are wrong.
-  //else {
-    //alert("Wrong!");
-    ///wrong++;
-  //}
-
-  // Increment the questionIndex variable and call the renderQuestion function.
-  //questionIndex++;
-  // renderQuestion();
-
-
+// Countdown timer
 function countdownFun() {
   countdown--
   console.log(countdown)
   if (countdown === 0) {
     timeout = true
     clearInterval(timer)
-    document.getElementById("gamearea").innerHTML=""
-    showresults()
-    //  Game is  over, clear timer 
+    document.getElementById("gamearea").innerHTML = " "
+
   }
 }
 
-// for (i = question; i < trivia.length; i++) {
-//   text += trivia[i];
-//   document.getElementById("trivia").innerHTML = text;
-//   console.log('text')
-// }
-//   //loop trivia[i].question   div with questions and when the game is over you empty the div and show a info in the results div
-
-// Calling function to start the game.
-
+// Answer selection and notifications
 document.getElementById("true").addEventListener("click", function () {
   console.log(this)
   if (trivia[questionIndex].answer === "True") {
@@ -160,10 +132,11 @@ document.getElementById("false").addEventListener("click", function () {
 })
 
 
-function  showresults() {
-//document.getElementsByClassName("card-content").innerHTML=""
-// you can show other content with the results
-  
-}
+// function showResults() {
+//   document.getElementsByClassName("results").innerHTML = `Results: ${}`
+//   // you can show other content with the results
 
-  renderQuestion();
+// }
+
+// restart game
+renderQuestion();
