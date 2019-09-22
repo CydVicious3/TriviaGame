@@ -62,10 +62,9 @@ let right = 0
 let wrong = 0
 // Number of missed questions
 // let unanswered = 0
-// Total results
-let results = { 'right' + 'wrong' }
+let results = { right, wrong };
 // Timer
-let countdown = 40
+let countdown = 20
 let timeout = false
 let timer = (setInterval(countdownFun, 1000))
 
@@ -81,7 +80,7 @@ function renderQuestion() {
     // If there aren't, render the end game screen.
     else {
       document.querySelector("#trivia").innerHTML = "Game Over!";
-      showResults()
+
     }
   }
 }
@@ -135,10 +134,12 @@ document.getElementById("false").addEventListener("click", function () {
 
 
 function showResults() {
-  document.getElementsByClassName("results").innerHTML = 'Right: `${'right'}`  +  Wrong: `${'wrong'}`'
+  document.getElementsByClassName('results').innerHTML = 'Right: ${ "right" } +  Wrong: ${ "wrong" }'
 
 
 }
+
+showResults();
 
 // restart game
 renderQuestion();
