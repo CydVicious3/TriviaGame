@@ -79,7 +79,7 @@ function renderQuestion() {
     // If there aren't, render the end game screen.
     else {
       document.querySelector("#trivia").innerHTML = "Game Over!";
-      showresults()
+      showResults()
     }
   }
 }
@@ -132,11 +132,11 @@ document.getElementById("false").addEventListener("click", function () {
 })
 
 
-// function showResults() {
-//   document.getElementsByClassName("results").innerHTML = `Results: ${}`
-//   // you can show other content with the results
+function showResults() {
+  document.getElementsByClassName("results").innerHTML = ` `
+  // you can show other content with the results
 
-// }
+}
 
 // restart game
 renderQuestion();
