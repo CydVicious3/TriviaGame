@@ -61,7 +61,9 @@ let right = 0
 // Number of wrong answers
 let wrong = 0
 // Number of missed questions
-let unanswered = 0
+// let unanswered = 0
+// Total results
+let results = { 'right' + 'wrong' }
 // Timer
 let countdown = 40
 let timeout = false
@@ -96,7 +98,7 @@ function countdownFun() {
   }
 }
 
-// Answer selection and notifications
+// Answer TRUE  notification
 document.getElementById("true").addEventListener("click", function () {
   console.log(this)
   if (trivia[questionIndex].answer === "True") {
@@ -112,7 +114,7 @@ document.getElementById("true").addEventListener("click", function () {
   questionIndex++;
   renderQuestion();
 })
-
+// Answer FALSE notification
 document.getElementById("false").addEventListener("click", function () {
   console.log(this)
 
@@ -133,8 +135,8 @@ document.getElementById("false").addEventListener("click", function () {
 
 
 function showResults() {
-  document.getElementsByClassName("results").innerHTML = ` `
-  // you can show other content with the results
+  document.getElementsByClassName("results").innerHTML = 'Right: `${'right'}`  +  Wrong: `${'wrong'}`'
+
 
 }
 

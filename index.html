@@ -12,17 +12,18 @@
   <title>Trivia Game</title>
 </head>
 <body>
-
   <div class="background">
-    <img src="./assets/HitsPanel.jpg">
+    <span><img src="assets/HitsPanel.jpg" alt="music-trivia"></span>
   </div>
 
+<!-- Game area -->
 <div id="gamearea" class="container">
   <div class="col s12 m6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
         <span class="card-title center">Music Trivia</span>
       </div>
+      <!-- Game query -->
       <div class="col s12 m6" id="trivia">
         <span class="center"> </span>
       </div>
@@ -32,15 +33,15 @@
       </div>
     </div>
   </div>
+<!-- </div>Results area -->
+<div class="col s12 m6" id="results"> 
+  <span class="center"> <h4> </h4></span>
 </div>
 
-<div class="col s12 m6" id="results"> 
-  <span class="center"> </span>
-</div>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./javascript/app.js"></script>
-  
+ 
 </body>
 </html>
