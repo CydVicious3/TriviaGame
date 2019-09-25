@@ -80,12 +80,8 @@ function renderQuestion() {
     // If there aren't, render the end game screen.
     else {
       console.log('Game Over')
-      document.querySelector("#trivia").innerHTML = "Game Over!";
-      clearInterval(timer);
-      showResults();
-      setTimeout(() => {
-      renderQuestion();
-      }, 30000);
+      gameOver()
+
     }
   }
 }
@@ -140,9 +136,15 @@ document.getElementById("false").addEventListener("click", function () {
 })
 
 
-function showResults() {
+function gameOver() {
   // document.getElementById('right').textContent = right
   // document.getElementById('wrong').textContent = wrong
+  document.querySelector("#trivia").innerHTML = "Game Over!";
+  clearInterval(timer);
+  setTimeout(() => {
+    
+    renderQuestion();
+  }, 10000);
   document.getElementById('trivia').innerHTML = `<h4>Correct:<span id =  'right'> ${right}</span> </h4>
 <h4>Wrong:<span id='wrong'>${wrong} </span> </h4>`
 }
