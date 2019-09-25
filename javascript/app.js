@@ -79,8 +79,13 @@ function renderQuestion() {
 
     // If there aren't, render the end game screen.
     else {
+      console.log('Game Over')
       document.querySelector("#trivia").innerHTML = "Game Over!";
-
+      clearInterval(timer);
+      showResults();
+      setTimeout(() => {
+      renderQuestion();
+      }, 30000);
     }
   }
 }
@@ -121,11 +126,13 @@ document.getElementById("false").addEventListener("click", function () {
 
     alert("Correct!");
     right++;
+    console.log(right++)
   }
 
   else {
     alert("Wrong!");
     wrong++;
+    console.log(wrong++)
   }
   questionIndex++;
   renderQuestion();
@@ -134,12 +141,13 @@ document.getElementById("false").addEventListener("click", function () {
 
 
 function showResults() {
-  document.getElementsByClassName('results').innerHTML = 'Right: ${ "right" } +  Wrong: ${ "wrong" }'
-
-
+  // document.getElementById('right').textContent = right
+  // document.getElementById('wrong').textContent = wrong
+  document.getElementById('trivia').innerHTML = `<h4>Correct:<span id =  'right'> ${right}</span> </h4>
+<h4>Wrong:<span id='wrong'>${wrong} </span> </h4>`
 }
 
-showResults();
+
 
 // restart game
 renderQuestion();
